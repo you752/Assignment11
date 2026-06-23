@@ -26,7 +26,6 @@ const UserSchema = new mongoose.Schema({
   profilePerson: String,
 
   profileImage: {
-    // ✅ ADD THIS
     type: String,
     default: "",
   },
