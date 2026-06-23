@@ -9,17 +9,7 @@ import {
 } from "../../common/middleware/security/HashWord.js";
 import { getEnv } from "../../../config/env.service.js";
 
-// export const getAllUser = async () => {
-//   try {
-//     const user = await UserModel.find();
-//     return user;
-//   } catch (err) {
-//     return {
-//       message: "Error fetching users",
-//       error: err.message,
-//     };
-//   }
-// };
+
 export const userGetData = async (userId) => {
   const getUser = await UserModel.findById(userId);
 
@@ -75,9 +65,5 @@ export const UpDateUserProfile = async (userId, data , files) => {
 
     new: true,
   });
-  console.log(files);
-  console.log(files);
-  console.log(files?.path);
-  console.log("profileImage =>", updateData.profileImage);
   return updatedUser;
 };
