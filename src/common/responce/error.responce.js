@@ -1,8 +1,5 @@
 import { getEnv } from "../../../config/env.service.js";
 
-/**
- * Base Error Thrower
- */
 export const ErrorResponse = ({
   status = 400,
   message = "Something went wrong",
@@ -17,8 +14,6 @@ export const ErrorResponse = ({
 
   throw error;
 };
-
-
 export const BadRequestException = (payload = {}) => {
   return ErrorResponse({ status: 400, ...payload });
 };
