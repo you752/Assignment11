@@ -19,7 +19,6 @@ import {
 
 import { sendEmail } from "../../common/utils/sendEmail.js";
 import { OAuth2Client } from "google-auth-library";
-import UserModel from "../../database/model/user.model.js";
 import { getEnv } from "../../../config/env.service.js";
 
 export const signup = async (data) => {
@@ -46,8 +45,6 @@ export const signup = async (data) => {
   }
 
   const hashPassword = await HashGenerate(password);
-
-  // OTP FIXED
   const otp = Math.floor(100000 + Math.random() * 900000);
   console.log(otp);
   const createdUser = await UserModel.create({
@@ -56,7 +53,7 @@ export const signup = async (data) => {
     password: hashPassword,
     uniqueAccName,
     otp,
-    otpExpires: Date.now() + 10 * 60 * 1000, // 10 min
+    otpExpires: Date.now() + 10 * 60 * 1000, 
     isVerified: false,
   });
   await sendEmail({
